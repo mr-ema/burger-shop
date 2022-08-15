@@ -1,11 +1,13 @@
 import { AdminLayout } from '@/components/admin';
 import { removeData } from '@/helpers/axios';
-import { Form, Input, Label } from '@styledComponents/forms';
+import { Input, Label } from '@styledComponents/forms';
 import { Button } from '@styledComponents/buttons';
 import { Container } from '@styledComponents/main';
 import { Span, Title } from '@styledComponents/text';
 import Image from 'next/image';
 import React from 'react';
+import Link from 'next/link';
+import { LinkButton } from '@styledComponents/links';
 
 export default function Page() {
   const [destroyDB, setDestroyDB] = React.useState<boolean>(false);
@@ -34,12 +36,16 @@ export default function Page() {
           layout='fill'
         />
       </Container>
-      <Container gap='0'>
+      <Container gap='1rem' flexDirection='column'>
         <Span 
-        fontSize='2rem' bg='#eee' color='#222' borderRadius='.6rem'
+        fontSize='2rem' color='#ddd' borderRadius='.6rem'
         padding='.6rem'>
           GODMODE
         </Span>
+
+        <Link href={'/'}>
+          <LinkButton fontSize='.9rem' bg='#aaa' color='#222'>Back To Shop</LinkButton>
+        </Link>
         
       </Container>
     </Container>

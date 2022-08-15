@@ -6,7 +6,7 @@ import Layout from '@/components/Layout';
 import { Banner } from '@/components/banner';
 import { IProduct } from '@/types/models';
 import { FailToLoad } from '@/components/errors';
-import type { GetStaticProps } from 'next';
+import type { GetServerSideProps } from 'next';
 import { connectDB } from '@/middleware/mongodb';
 import { Product } from '@/models/product';
 
@@ -54,7 +54,7 @@ export default function Page(props: Props) {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   
   await connectDB();
   const res= JSON.stringify( await Product.find({}).exec() );

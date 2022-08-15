@@ -26,6 +26,7 @@ export default function AdminLayout({ children }: Props): JSX.Element {
       if (res.status === 200) setBypass('bypassed')
       else setBypass('failed')
     }
+  
   }
 
   React.useEffect(() => {
@@ -36,20 +37,20 @@ export default function AdminLayout({ children }: Props): JSX.Element {
         else setBypass('failed')
       }
     }
-
+    console.log(bypass === 'failed')
     getBypass()
-  }, [])
+  }, [bypass])
   
   if (status === 'loading') return <Spinner bg='#fff'/>
 
-  if (!session && bypass === 'failed') return (
+  if (!session && !bypass || bypass === 'failed') return (
     <Container width='100vw' height='100vh'>
       <IsLogin/>
       <Container position='absolute' top='10%'>
         <Button border='2px solid #222' onClick={() => bypassLogin()}>ByPass</Button>
       </Container>
     </Container>
-  )
+)
   
 
   return (

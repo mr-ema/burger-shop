@@ -10,6 +10,7 @@ type Props = {
 }
 
 export default function Layout({ children }: Props): JSX.Element {
+  
   return (
     <Provider store={store}>
       <Head>

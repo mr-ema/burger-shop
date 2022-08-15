@@ -6,7 +6,8 @@ const handleCase = {
     const bypass = req.cookies['bypass'];
     if (!bypass) throw new Error("Can't get bypass")
 
-    res.status(200).json('bypassed');
+    if (bypass === 'GODMODE') res.status(200).json('bypassed');
+    else throw new Error("Invailid bypass");
   },
 
   POST: async function(req: NextApiRequest, res: NextApiResponse) {
